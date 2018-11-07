@@ -1,0 +1,25 @@
+// All core colors are defined here
+$bg-primary: #005DFF;
+$bg-primary-light: lighten($bg-primary, 40%);
+$bg-primary-dark: darken($bg-primary, 40%);
+$accent: #FFF6BB;
+
+
+$padding: 15px;
+$borders: 15px;
+
+// Functions
+
+// Color retrival function, used to access the color map above
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+// Responsive point
+$desktop: 840px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
