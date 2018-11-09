@@ -3,130 +3,236 @@
 
 .App {
   font-family: 'Montserrat' sans-serif;
+  // background-color: white !important;
+  // height: 1000px;
 
-  h1 {
-    color: green;
+  h1, h2, p, li {
+    color: $t-title;
+    font-family: 'Montserrat';
+  }
+
+  p {
+    font-weight: lighter;
   }
 
   .bg {
-    clip-path: polygon(100% 0, 100% 70%, 60% 100%, 0 100%, 0 0);
+    clip-path: polygon(100% 0, 100% 56%, 75% 100%, 0 100%, 0 46%, 31% 0);
     background-color: $bg-primary;
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0;
+    bottom: 0;
     z-index: -1;
+    position: fixed;
 
     // Responsive
-    @include desktop {
-      clip-path: polygon(0 0, 77% 0, 60% 100%, 0% 100%);
-    }
-  }
-
-  header a {
-    color: white;
-    text-decoration: none;
-    padding: $padding;
-    display: block;
-    text-transform: uppercase;
+    // @include desktop {
+    //   clip-path: polygon(0 0, 77% 0, 60% 100%, 0% 100%);
+    // }
   }
 }
 
 main {
-
-  // Responsive
-  @include desktop {
-    display: grid;
-    grid-template-columns: 50% auto;
-    grid-template-areas: "primary card";
-  }
-
-  section.card {
-    background: white;
-    padding: 20px;
-    margin: 1em auto;
-    border-radius: $borders;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
-    width: 80%;
-
-    @include desktop {
-      grid-area: card;
-      height: fit-content;
-      align-self: center;
-      margin: 1em;
-    }
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-
-      li {
-        margin-bottom: 10px;
-
-        span {
-          position: absolute;
-          width: 30px;
-          height: 30px;
-          background-color: $bg-primary-light;
-          border-radius: 50%;
-          margin-right: 10px;
-        }
-
-        strong {
-          display: inline-block;
-          margin-left: max(40px);
-          margin-top: 10px;
-        }
-      }
-    }
-  }
+  display: grid;
+  grid-template-columns: 3;
+  grid-template-areas: "left primary right";
+  height: 100%;
 
   section.primary {
-    color: white;
-    padding: $padding;
+    grid-area: primary;
     text-align: center;
+    margin-bottom: 6em;
 
-    @include desktop {
-      grid-area: primary;
-      text-align: left;
-      // height: fit-content;
-      // align-self: center;
-      margin: 4em 0 0 4em;
-    }
+    section.title {
+      overflow:hidden;
 
-    h1{
-      color: white;
-      font-size: 3em;
-      margin-top: 10px;
-      text-transform: uppercase;
+      h1 {
+        font-size: 6em;
+        margin-bottom: 0;
+      }
 
-      @include desktop {
-        width: 30%;
-        font-size: 4em;
-        line-height: 0.9em;
+      p {
+        font-size: 1.8em;
+        margin: 0;
       }
     }
 
-    p {
-      font-size: 1.4em;
-    }
+    section.card {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+      position: relative;
+      top: 10%;
+      height: 60vh;
+      border-radius: 20px;
+      box-shadow: 10px 10px 10;
 
-    a {
-      color: $bg-primary-dark;
-      border-radius: $borders;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: bold;
-      background-color: $accent;
-      text-align: center;
-      margin: 50px auto 0 auto;
-      padding: $padding;
+      h1 {
+        color: $t-primary;
+        padding: 30px 0;
+        border-bottom: 2px solid $bg-primary-light;
+        width: 80%;
+        margin: 0 auto;
+        font-size: 1.4em;
+      }
 
-      @include desktop {
-        display: inline-block;
-        padding: $padding $padding * 4;
+      h2 {
+        color: $t-primary;
+        font-size: 1.2em;
+      }
+
+      .submit-button {
+        width: 100%;
+        font-family: "Montserrat";
+        position: absolute;
+        bottom: 0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: blue;
+        color: white;
+      }
+
+      section.inner {
+        margin-bottom: 50px;
+        padding-top: 20px;
+
+        ul {
+          list-style-type: none;
+
+          li {
+            color: $t-primary;
+            float: left;
+            margin: 5px 15px;
+            padding: 4px;
+          }
+        }
+
+        .button {
+          border: 1px solid $bg-primary-light;
+          cursor: pointer;
+        }
+
+        .button:hover {
+          @include transition;
+          border: 1px solid darken($bg-primary-light, 40%);
+        }
+
+        .button.selected {
+          border: 2px solid darken($bg-primary-light, 40%);
+        }
+
+        .input {
+          border-bottom: 2px solid $bg-primary-light;
+          width: 15%;
+
+          input {
+            border: none;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+          }
+        }
 
       }
     }
   }
+
+  // Responsive
+  // @include desktop {
+  //   display: grid;
+  //   grid-template-columns: 50% auto;
+  //   grid-template-areas: "primary card";
+  // }
+
+  // section.card {
+  //   background: white;
+  //   padding: 20px;
+  //   margin: 1em auto;
+  //   border-radius: $borders;
+  //   box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+  //   width: 80%;
+  //
+  //   @include desktop {
+  //     grid-area: card;
+  //     height: fit-content;
+  //     align-self: center;
+  //     margin: 1em;
+  //   }
+  //
+  //   ul {
+  //     list-style-type: none;
+  //     margin: 0;
+  //     padding: 0;
+  //
+  //     li {
+  //       margin-bottom: 10px;
+  //
+  //       span {
+  //         position: absolute;
+  //         width: 30px;
+  //         height: 30px;
+  //         background-color: $bg-primary-light;
+  //         border-radius: 50%;
+  //         margin-right: 10px;
+  //       }
+  //
+  //       strong {
+  //         display: inline-block;
+  //         margin-left: max(40px);
+  //         margin-top: 10px;
+  //       }
+  //     }
+  //   }
+  // }
+  //
+  // section.primary {
+  //   color: white;
+  //   padding: $padding;
+  //   text-align: center;
+  //
+  //   @include desktop {
+  //     grid-area: primary;
+  //     // text-align: left;
+  //     // height: fit-content;
+  //     // align-self: center;
+  //     margin: 4em auto auto 4em;
+  //   }
+  //
+  //   h1{
+  //     color: white;
+  //     font-size: 3em;
+  //     margin-top: 10px;
+  //     text-transform: uppercase;
+  //
+  //     @include desktop {
+  //       width: 100%;
+  //       font-size: 4em;
+  //       line-height: 0.9em;
+  //     }
+  //   }
+  //
+  //   p {
+  //     font-size: 1.4em;
+  //   }
+  //
+  //   a {
+  //     color: $bg-primary-dark;
+  //     border-radius: $borders;
+  //     text-decoration: none;
+  //     text-transform: uppercase;
+  //     font-weight: bold;
+  //     background-color: $accent;
+  //     text-align: center;
+  //     margin: 50px auto 0 auto;
+  //     padding: $padding;
+  //
+  //     @include desktop {
+  //       display: inline-block;
+  //       padding: $padding $padding * 4;
+  //
+  //     }
+  //   }
+  // }
 }

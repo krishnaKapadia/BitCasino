@@ -4,15 +4,30 @@ $bg-primary-light: lighten($bg-primary, 40%);
 $bg-primary-dark: darken($bg-primary, 40%);
 $accent: #FFF6BB;
 
+// Text colors
+$t-title: white;
+$t-primary: #606060;
 
+// Paddings
 $padding: 15px;
 $borders: 15px;
+
+// Animation Timings
+$timing: .3s;
 
 // Functions
 
 // Color retrival function, used to access the color map above
 @function color($name) {
   @return map-get($colors, $name);
+}
+
+// Mixins
+@mixin transition {
+  -webkit-transition: all $timing ease-out;
+  -moz-transition: all $timing ease-out;
+  -ms-transition: all $timing ease-out;
+  transition: all $timing ease-out;
 }
 
 // Responsive point
